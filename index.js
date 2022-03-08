@@ -12,11 +12,12 @@ const engineerQuestions = require("./lib/engineerQuestions");
 const Intern = require("./lib/internClass");
 const internQuestions = require("./lib/internQuestions");
 
-const html = require("./lib/html");
+const HTMLpage = require("./src/html")
 
 let teamARR = [];
 
 runProgram();
+
 
 function runProgram () {
     inquirer.prompt([
@@ -56,12 +57,12 @@ function addMembers() {
 function addManager() {
     inquirer.prompt(managerQuestions)
     .then(function(data){
-        const managerRole = data.role;
         const managerName = data.managerName;
         const managerID = data.managerID;
         const managerEmail = data.managerEmail;
         const managerNumber = data.managerNumber;
-        const emplyeeInformation = new Manager (managerRole, managerName, managerID, managerEmail, managerNumber);
+        const managerRole = data.role;
+        const emplyeeInformation = new Manager (managerName, managerID, managerEmail, managerNumber, managerRole);
         teamARR.push(emplyeeInformation);
         addMembers();
     });
@@ -69,36 +70,38 @@ function addManager() {
 function addEngineer() {
     inquirer.prompt(engineerQuestions)
     .then(function(data){
-        const engineerRole = data.role
         const engineerName = data.engineerName;
         const engineerID = data.engineerID;
         const engineerEmail = data.engineerEmail;
         const engineerGithub = data.engineerGithub;
-        const emplyeeInformation = new Engineer (engineerRole, engineerName, engineerID, engineerEmail, engineerGithub);
+        const engineerRole = data.role
+        const emplyeeInformation = new Engineer (engineerName, engineerID, engineerEmail, engineerGithub, engineerRole);
         teamARR.push(emplyeeInformation);
         addMembers();
     });
 };
-/*
 function addIntern() {
     inquirer.prompt(internQuestions)
     .then(function(data){
-        const internRole = data.role,
         const internName = data.internName;
         const internID = data.internID;
         const internEmail = data.internEmail;
         const internSchool = data.internSchool;
-        const emplyeeInformation = new Intern (internRole, internName, internID, internEmail, internSchool);
+        const internRole = data.role
+        const emplyeeInformation = new Intern (internName, internID, internEmail, internSchool, internRole);
         teamARR.push(emplyeeInformation);
         addMembers();
     });
-};*/
+};
 
 function createHTML() {
-    let htmlarr = ${htmlarr};
+    console.log(teamARR);
+    module.exports = teamARR;
+    //fs.writeFile("./dist/index.html", HTMLpage, function(err) {
+        //if (err) {console.log(err);}
+    //});
+};
 
-    fs.writeFile("${teamARR[0]}.html", htmlarr, (err) => {
-        if(err){
-            return console.log(err);}
-    });
-}
+
+
+
