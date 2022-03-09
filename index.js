@@ -12,12 +12,13 @@ const engineerQuestions = require("./lib/engineerQuestions");
 const Intern = require("./lib/internClass");
 const internQuestions = require("./lib/internQuestions");
 
-const HTMLpage = require("./src/html")
+//const HTMLpage = require("./src/html")
 
 let teamARR = [];
 
-runProgram();
 
+runProgram();
+ 
 
 function runProgram () {
     inquirer.prompt([
@@ -94,13 +95,36 @@ function addIntern() {
     });
 };
 
+const fullPage = function (teamARR) {
+    return `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>${teamARR[0]}</title>
+    </head>
+    <body>
+        <h1>${teamARR[0]}</h1>
+        <div>
+        ${teamARR[1]}
+        </div>
+    </body>
+    </html> 
+    `;
+};
+
 function createHTML() {
     console.log(teamARR);
-    module.exports = teamARR;
-    //fs.writeFile("./dist/index.html", HTMLpage, function(err) {
-        //if (err) {console.log(err);}
-    //});
+    const htmlpage = fullPage(teamARR);
+    fs.writeFile('./dist/index.html', htmlpage, (err) =>
+        err ? console.log(err) : console.log('HTML File Created')
+    );
 };
+
+
+    
+
 
 
 

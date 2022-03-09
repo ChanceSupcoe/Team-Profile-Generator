@@ -6,45 +6,7 @@ const profilename = function(data){
     `;
 };
 
-const managerHTML = function (Manager) {
-    return `
-    <div>
-    <h3>Manager</h3>
-    <ul>
-        <li>${managerName}</li>
-        <li>${managerID}</li>
-        <li>${managerEmail}</li>
-        <li>${managerNumber}</li>
-    </ul>
-    </div>
-    `;
-};
-const engineerHTML = function (Engineer) {
-    return `
-    <div>
-    <h3>Engineer</h3>
-    <ul>
-        <li>${engineerName}</li>
-        <li>${engineerName}</li>
-        <li>${engineerName}</li>
-        <li>${engineerGithub}</li>
-    </ul>
-    </div>
-    `;
-};
-const internHTML = function (Intern) {
-    return `
-    <div>
-    <h3>Intern</h3>
-    <ul>
-        <li>${internName}</li>
-        <li>${internName}</li>
-        <li>${internName}</li>
-        <li>${internSchool}</li>
-    </ul>
-    </div>
-    `;
-};
+
 
 const fullPage = function (personnelSections) {
     return `
@@ -65,29 +27,62 @@ const fullPage = function (personnelSections) {
     `;
 };
 
-const HTMLpage = () => {
+const personnelSections = function ([teamARR]) {
     let sections = [];
 
     for (let i=0; i<data.length; i++) {
         const teamARR = data[i];
 
         if (data.role === "Manager"){
-            const managerSection = managerHTML(teamARR);
+            const managerSection = function (Manager) {
+                return `
+                <div>
+                <h3>Manager</h3>
+                <ul>
+                    <li>${managerName}</li>
+                    <li>${managerID}</li>
+                    <li>${managerEmail}</li>
+                    <li>${managerNumber}</li>
+                </ul>
+                </div>
+                `;
+            };
             sections.push(managerSection);
         }
         if (data.role === "Engineer"){
-            const engineerSection = engineerHTML(teamARR);
+            const engineerSection = function (Engineer) {
+                return `
+                <div>
+                <h3>Engineer</h3>
+                <ul>
+                    <li>${engineerName}</li>
+                    <li>${engineerName}</li>
+                    <li>${engineerName}</li>
+                    <li>${engineerGithub}</li>
+                </ul>
+                </div>
+                `;
+            };
             sections.push(engineerSection);
         }
         if (data.role === "Intern"){
-            const internSection = internHTML(teamARR);
+            const internSection = function (Intern) {
+                return `
+                <div>
+                <h3>Intern</h3>
+                <ul>
+                    <li>${internName}</li>
+                    <li>${internName}</li>
+                    <li>${internName}</li>
+                    <li>${internSchool}</li>
+                </ul>
+                </div>
+                `;
+            };
             sections.push(internSection);
         }
     }
     const personnelSections = sections.join('');
-    const finalpage = fullPage(personnelSections);
-    return finalpage;
-    
 }
 
 module.exports = HTMLpage;
