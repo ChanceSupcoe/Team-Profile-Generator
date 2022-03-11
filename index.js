@@ -12,9 +12,7 @@ const engineerQuestions = require("./lib/engineerQuestions");
 const Intern = require("./lib/internClass");
 const internQuestions = require("./lib/internQuestions");
 
-//const HTMLpage = require("./src/html")
-
-let teamARR = [];
+const teamARR = [];
 
 
 runProgram();
@@ -95,8 +93,8 @@ function addIntern() {
     });
 };
 
-const fullPage = function (teamARR) {
-    return `
+const fullPage = (teamARR) => 
+    `
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -107,12 +105,12 @@ const fullPage = function (teamARR) {
     <body>
         <h1>${teamARR[0]}</h1>
         <div>
-        ${teamARR[1]}
+        ${teamARR}
         </div>
     </body>
     </html> 
     `;
-};
+
 
 function createHTML() {
     console.log(teamARR);
