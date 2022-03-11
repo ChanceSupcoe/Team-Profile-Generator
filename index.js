@@ -12,7 +12,7 @@ const engineerQuestions = require("./lib/engineerQuestions");
 const Intern = require("./lib/internClass");
 const internQuestions = require("./lib/internQuestions");
 
-const teamARR = [];
+let teamARR = [];
 
 
 runProgram();
