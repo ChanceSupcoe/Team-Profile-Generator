@@ -10,5 +10,5 @@ Application runs by typing in node index.js.
 
 ## Walkthrough
 
-![Video of Walkthrough](https://drive.google.com/file/d/11My1b2t6yG8JKUPe1GqunTaMeLiXAz0I/view)
+https://drive.google.com/file/d/11My1b2t6yG8JKUPe1GqunTaMeLiXAz0I/view
 
