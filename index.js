@@ -62,12 +62,16 @@ function addManager() {
         const newManager = new Manager (managerName, managerID, managerEmail, managerNumber);
         const emplyeeInformation = 
         `
-        <div>
-        <h2>MANAGER</h2>
-        <p>Name:    ${managerName}</p>
-        <p>ID:      ${managerID}</p>
-        <p>Email:   ${managerEmail}</p>
-        <p>Phone:   ${managerNumber}</p>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                <h5 class="card-title">INTERN</h5>
+                <p class="card-text">Name: ${managerName}</p>
+                <p class="card-text">Id: ${managerID}</p>
+                <p class="card-text">Email: ${managerEmail}</p>
+                <p class="card-text">Phone: ${managerNumber}</p>
+                </div>
+            </div>
         </div>
         `;
         teamARR.push(emplyeeInformation);
@@ -85,12 +89,16 @@ function addEngineer() {
         const newEngineer = new Engineer (engineerName, engineerID, engineerEmail, engineerGithub);
         const emplyeeInformation = 
         `
-        <div>
-        <h2>ENGINEER</h2>
-        <p>Name:    ${engineerName}</p>
-        <p>ID:      ${engineerID}</p>
-        <p>Email:   ${engineerEmail}</p>
-        <p>GitHub:   ${engineerGithub}</p>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                <h5 class="card-title">ENGINEER</h5>
+                <p class="card-text">Name: ${engineerName}</p>
+                <p class="card-text">Id: ${engineerID}</p>
+                <p class="card-text">Email: ${engineerEmail}</p>
+                <p class="card-text">GitHub: ${engineerGithub}</p>
+                </div>
+            </div>
         </div>
         `;
         teamARR.push(emplyeeInformation);
@@ -108,12 +116,16 @@ function addIntern() {
         const newIntern = new Intern (internName, internID, internEmail, internSchool);
         const emplyeeInformation = 
         `
-        <div>
-        <h2>INTERN</h2>
-        <p>Name:    ${internName}</p>
-        <p>ID:      ${internID}</p>
-        <p>Email:   ${internEmail}</p>
-        <p>School:   ${internSchool}</p>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">INTERN</h5>
+                  <p class="card-text">Name: ${internName}</p>
+                  <p class="card-text">Id: ${internID}</p>
+                  <p class="card-text">Email: ${internEmail}</p>
+                  <p class="card-text">Phone: ${internSchool}</p>
+                </div>
+            </div>
         </div>
         `;
         teamARR.push(emplyeeInformation);
@@ -123,22 +135,27 @@ function addIntern() {
 };
 
 const fullPage = () => 
-    `
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>${teamName}</title>
+`
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>${teamName}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     </head>
     <body>
-        <h1>${teamName}</h1>
-        <div>
+    <header>
+    <h1 style="text-align: center;">${teamName}</h1>
+    </header>
+    <div class="container">
+        <div class="row">
         ${teamARR}
         </div>
-    </body>
-    </html> 
-    `;
+    </div>
+</body>
+</html> 
+`;
 
 
 function createHTML() {
