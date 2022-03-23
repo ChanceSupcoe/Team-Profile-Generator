@@ -1,10 +1,14 @@
 const inquirer = require('inquirer'); 
 const fs = require('fs');
 
-const employeeQuestions = require('./lib/employeeQuestions');
+const employeeQuestions = require("./lib/employeeQuestions");
+const Employee = require("./lib/employeeClass");
 const managerQuestions = require("./lib/managerQuestions");
+const Manager = require("./lib/managerClass");
 const engineerQuestions = require("./lib/engineerQuestions");
+const Engineer = require("./lib/engineerClass");
 const internQuestions = require("./lib/internQuestions");
+const Intern = require("./lib/internClass");
 
 let teamName = [];
 let teamARR = [];
@@ -54,6 +58,7 @@ function addManager() {
         const managerID = data.managerID;
         const managerEmail = data.managerEmail;
         const managerNumber = data.managerNumber;
+        const newManager = new Manager (managerName, managerID, managerEmail, managerNumber);
         const emplyeeInformation = 
         `
         <div>
@@ -75,6 +80,7 @@ function addEngineer() {
         const engineerID = data.engineerID;
         const engineerEmail = data.engineerEmail;
         const engineerGithub = data.engineerGithub;
+        const newEngineer = new Engineer (engineerName, engineerID, engineerEmail, engineerGithub);
         const emplyeeInformation = 
         `
         <div>
@@ -96,6 +102,7 @@ function addIntern() {
         const internID = data.internID;
         const internEmail = data.internEmail;
         const internSchool = data.internSchool;
+        const newIntern = new Intern (internName, internID, internEmail, internSchool);
         const emplyeeInformation = 
         `
         <div>
