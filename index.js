@@ -2,21 +2,15 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 
 const employeeQuestions = require('./lib/employeeQuestions');
-
-const Manager = require("./lib/managerClass");
 const managerQuestions = require("./lib/managerQuestions");
-
-const Engineer = require("./lib/engineerClass");
 const engineerQuestions = require("./lib/engineerQuestions");
-
-const Intern = require("./lib/internClass");
 const internQuestions = require("./lib/internQuestions");
 
+let teamName = [];
 let teamARR = [];
 
 
 runProgram();
- 
 
 function runProgram () {
     inquirer.prompt([
@@ -28,7 +22,7 @@ function runProgram () {
     ])
     .then(function(data){
         const profileName = data.profileName;
-        teamARR.push(profileName);
+        teamName.push(profileName);
         addMembers();
     });
 };
@@ -60,8 +54,16 @@ function addManager() {
         const managerID = data.managerID;
         const managerEmail = data.managerEmail;
         const managerNumber = data.managerNumber;
-        const managerRole = data.role;
-        const emplyeeInformation = new Manager (managerName, managerID, managerEmail, managerNumber, managerRole);
+        const emplyeeInformation = 
+        `
+        <div>
+        <h2>MANAGER</h2>
+        <p>Name:    ${managerName}</p>
+        <p>ID:      ${managerID}</p>
+        <p>Email:   ${managerEmail}</p>
+        <p>Phone:   ${managerNumber}</p>
+        </div>
+        `;
         teamARR.push(emplyeeInformation);
         addMembers();
     });
@@ -73,8 +75,16 @@ function addEngineer() {
         const engineerID = data.engineerID;
         const engineerEmail = data.engineerEmail;
         const engineerGithub = data.engineerGithub;
-        const engineerRole = data.role
-        const emplyeeInformation = new Engineer (engineerName, engineerID, engineerEmail, engineerGithub, engineerRole);
+        const emplyeeInformation = 
+        `
+        <div>
+        <h2>ENGINEER</h2>
+        <p>Name:    ${engineerName}</p>
+        <p>ID:      ${engineerID}</p>
+        <p>Email:   ${engineerEmail}</p>
+        <p>GitHub:   ${engineerGithub}</p>
+        </div>
+        `;
         teamARR.push(emplyeeInformation);
         addMembers();
     });
@@ -86,24 +96,32 @@ function addIntern() {
         const internID = data.internID;
         const internEmail = data.internEmail;
         const internSchool = data.internSchool;
-        const internRole = data.role
-        const emplyeeInformation = new Intern (internName, internID, internEmail, internSchool, internRole);
+        const emplyeeInformation = 
+        `
+        <div>
+        <h2>INTERN</h2>
+        <p>Name:    ${internName}</p>
+        <p>ID:      ${internID}</p>
+        <p>Email:   ${internEmail}</p>
+        <p>School:   ${internSchool}</p>
+        </div>
+        `;
         teamARR.push(emplyeeInformation);
         addMembers();
     });
 };
 
-const fullPage = (teamARR) => 
+const fullPage = () => 
     `
     <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>${teamARR[0]}</title>
+        <title>${teamName}</title>
     </head>
     <body>
-        <h1>${teamARR[0]}</h1>
+        <h1>${teamName}</h1>
         <div>
         ${teamARR}
         </div>
@@ -113,6 +131,7 @@ const fullPage = (teamARR) =>
 
 
 function createHTML() {
+    console.log(teamName);
     console.log(teamARR);
     const htmlpage = fullPage(teamARR);
     fs.writeFile('./dist/index.html', htmlpage, (err) =>
