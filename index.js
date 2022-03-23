@@ -12,6 +12,7 @@ const Intern = require("./lib/internClass");
 
 let teamName = [];
 let teamARR = [];
+let employeeARR = [];
 
 
 runProgram();
@@ -70,6 +71,7 @@ function addManager() {
         </div>
         `;
         teamARR.push(emplyeeInformation);
+        employeeARR.push(newManager);
         addMembers();
     });
 };
@@ -92,6 +94,7 @@ function addEngineer() {
         </div>
         `;
         teamARR.push(emplyeeInformation);
+        employeeARR.push(newEngineer);
         addMembers();
     });
 };
@@ -114,6 +117,7 @@ function addIntern() {
         </div>
         `;
         teamARR.push(emplyeeInformation);
+        employeeARR.push(newIntern);
         addMembers();
     });
 };
